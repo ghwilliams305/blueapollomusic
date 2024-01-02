@@ -1,0 +1,39 @@
+footer, main {
+    position:relative;
+    top:6rem;
+}
+
+main {
+    background-image:url('../images/temp_tuba.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+section {
+    align-items:flex-start;
+    display:flex;
+    height:20rem;
+    justify-content:space-around;
+    padding:2rem 0.75rem;
+}
+
+section h1 {
+    background-color:#000;
+    border-bottom:0.2rem solid #ffe227;
+    border-radius:1rem;
+    color:#ffe227;
+    display:inline-block;
+    font-size:4rem;
+    padding:1rem 3rem;
+    width:95%;
+}
+
+#socials {
+    background-color:rgba(41, 191, 255, 0.5);
+    border-bottom-left-radius:1rem;
+    border-bottom-right-radius:1rem;
+    left:60%;
+    position:absolute;
+    width:40%;
+    z-index:5;
+}

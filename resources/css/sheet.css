@@ -1,0 +1,50 @@
+footer, main {
+    position:relative;
+    top:6rem;
+}
+
+section {
+    align-content:space-between;
+    align-items:flex-start;
+    display:flex;
+    flex-wrap:wrap;
+    height:50rem;
+    justify-content:space-around;
+    padding:2rem 3rem;
+}
+
+#desciption {background-color:#000;}
+
+#head {
+    background-color:#000;
+    border-radius:1rem;
+    display:inline-block;
+    padding:1rem;
+}
+
+#head h1 {
+    color:#ffe227;
+    font-size:2rem;
+}
+
+#info {
+    align-items:flex-start;
+    display:inline-flex;
+    flex-flow:column nowrap;
+    height:30rem;
+    justify-content:space-around;
+    width:50%;
+}
+
+#more {
+    align-items:center;
+    background-color:rgba(255, 226, 39, 0.58);
+    border-radius:1rem;
+    display:inline-flex;
+    flex-flow:column nowrap;
+    height:30rem;
+    justify-content:space-around;
+    width:50%;
+}
+
+#more h2 {font-size:1.5rem;}
