@@ -8,7 +8,7 @@
         <link href="./resources/css/sheet.css" type="text/css" rel="stylesheet"/>
         <link href="./resources/images/apollo_logo.jpg" type="image/jpeg" rel="icon"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Blue Apollo Music | Song Name</title>
+        <title id="pagetitle">Blue Apollo Music | Song Name</title>
     </head>
     <body>
         <header>
@@ -29,18 +29,15 @@
                 <article id="info">
                     <div id="head">
                         <h1>Song Title (year)</h1>
-                        <span>Duration: 0' 00"</span>
                     </div>
                     <img src="" alt="song name cover" id="cover"/>
-                    <audio controls>
-                        <source src=""/>
-                    </audio>
+                    <audio controls id="audio"></audio>
                 </article>
                 <aside id="more">
                     <h2>Relevant Content</h2>
                 </aside>
                 <article id="info2">
-                    <p id="desciption"></p>
+                    <p id="description"></p>
                     <iframe>
                         
                     </iframe>
@@ -59,4 +56,6 @@
             </div>
         </footer>
     </body>
+    <script src="./resources/js/modules/song.js" defer></script>
+    <script src="./resources/js/sheet.js" defer></script>
 </html>

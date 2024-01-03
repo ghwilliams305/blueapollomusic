@@ -23,7 +23,7 @@
                 </ul>
             </nav>
             <div id="banner">
-                <h1>Blue Apollo Music</h1>
+                <h1 id="hey" onclick="changeText()">Blue Apollo Music</h1>
             </div>
         </header>
         <main>
@@ -36,11 +36,13 @@
                 <div id="content">
                     <article>
                         <h2>Top Songs</h2>
-                        <ul></ul>
+                        <img id="topimg" src="" alt="top song cover"/>
+                        <ol id="top"></ol>
                     </article>
                     <article>
                         <h2>New Songs</h2>
-                        <ul></ul>
+                        <img id="newimg" src="" alt="new song cover"/>
+                        <ol id="new"></ol>
                     </article>
                 </div>
             </section>
@@ -57,4 +59,6 @@
             </div>
         </footer>
     </body>
+    <script src="./resources/js/modules/song.js" defer></script>
+    <script src="./resources/js/main.js" defer></script>
 </html>

@@ -3,6 +3,25 @@ footer, main {
     top:6rem;
 }
 
+article {
+    background-color:#000;
+    border-radius:1rem;
+    display:flex;
+    height:10rem;
+    margin:1rem;
+    overflow:hidden;
+}
+
+article:hover {box-shadow:0 0 2rem 1rem #000;}
+
+article:active {opacity:0.75;}
+
+article h2 {
+    color:#ffe227;
+    font-size:1.75rem;
+    margin-bottom:1rem;
+}
+
 main {
     background-image:url('../images/temp_tuba.jpg');
     background-repeat:no-repeat;
@@ -12,7 +31,7 @@ main {
 section {
     align-items:flex-start;
     display:flex;
-    height:20rem;
+    flex-wrap:wrap;
     justify-content:space-around;
     padding:2rem 0.75rem;
 }
@@ -24,6 +43,7 @@ section h1 {
     color:#ffe227;
     display:inline-block;
     font-size:4rem;
+    margin:2rem 0;
     padding:1rem 3rem;
     width:95%;
 }
@@ -36,4 +56,48 @@ section h1 {
     position:absolute;
     width:40%;
     z-index:5;
+}
+
+#chamber article {
+    align-content:space-around;
+    align-items:center;
+    flex-wrap:wrap;
+    height:fit-content;
+    justify-content:center;
+    padding-bottom:1rem;
+    width:25%;
+}
+
+#chamber article div {
+    text-align:center;
+    width:90%;
+}
+
+#chamber article img {width:100%;}
+
+#orchestra article {
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    width:50%;
+}
+
+#orchestra article div {width:60%;}
+
+#orchestra article img {
+    height:100%;
+    margin-right:2rem;
+}
+
+#wind article {
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+}
+
+#wind article div {width:60%;}
+
+#wind article img {
+    height:100%;
+    margin-right:3rem;
 }
