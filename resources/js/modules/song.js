@@ -1,6 +1,14 @@
 //Creates Song Class that creates songs
 class Song {
     constructor(fileKey, title, description, date, type) {
+        if(typeof title !== 'string') throw new Error('Title needs to be a string');
+        if(typeof fileKey !== 'string') throw new Error('File Key needs to be a string');
+        if(typeof description !== 'string') throw new Error('Description needs to be a string');
+        if(typeof type !== 'string') throw new Error('Type needs to be a string');
+        if(!(type === 'wind' || type === 'band' || type === 'orchestra' || type === 'chamber')) {
+            throw new Error('Type needs to equal bands, orchestra, chamber, or wind');
+        }
+        if(typeof date !== 'string' || date.match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/g) === null) throw new Error('Type needs to be a string');
         this.title = title;
         this.description = description;
         this.fileKey = fileKey;
