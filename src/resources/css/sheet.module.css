@@ -1,0 +1,71 @@
+.description {
+    background-color:#000;
+    border-radius:1rem;
+    line-height:2;
+    margin-bottom:2rem;
+    padding:1rem;
+}
+
+.head {
+    background-color:#000;
+    border-radius:1rem;
+    display:inline-block;
+    padding:1rem;
+}
+
+.head h1 {
+    color:#ffe227;
+    font-size:2rem;
+}
+
+.iframe {
+    height:20rem;
+    width:100%;
+}
+
+.info {
+    align-items:flex-start;
+    display:inline-flex;
+    flex-flow:column nowrap;
+    height:30rem;
+    justify-content:space-between;
+    width:50%;
+}
+
+.info img {
+    border-radius:1rem;
+    height:20rem;
+}
+
+
+.main {
+    background-image:url('../images/temp_tuba.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.section {
+    align-content:space-around;
+    align-items:flex-start;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    padding:2rem 3rem;
+}
+
+.section article {
+    margin-bottom:2rem;
+}
+
+.SongContainer {
+    align-items:center;
+    background-color:rgba(255, 226, 39, 0.58);
+    border-radius:1rem;
+    display:inline-flex;
+    flex-flow:column nowrap;
+    height:30rem;
+    justify-content:space-around;
+    width:50%;
+}
+
+.SongContainer h1 {font-size:1.5rem;}

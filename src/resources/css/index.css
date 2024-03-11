@@ -1,0 +1,227 @@
+* {
+    font-family:'Comfortaa', Arial, sans-serif;
+    font-size:20px;
+    color:#fff;
+    margin:0;
+    padding:0;
+}
+
+a:hover {
+    color:#29bfff;
+    text-decoration:none;
+}
+
+a:active {opacity:0.75;}
+
+footer {
+    align-items:center;
+    background-color:#ffe227;
+    box-shadow:0 -0.25rem 0.5rem #000;
+    display:flex;
+    justify-content:space-between;
+    padding:1.25rem;
+}
+
+footer .infobox {display:inline-block;}
+
+footer, main {
+    position:relative;
+    top:6rem;
+}
+
+h1, h2, h3 {font-family:'Comic Neue', cursive;}
+
+main {
+    background-image:url('../images/me_tuba.jpg');
+    background-position:55% 15%;
+}
+
+nav {
+    align-items:center;
+    background-color:#29bfff;
+    box-shadow:0 0.25rem 0.5rem #000;
+    box-sizing:border-box;
+    display:flex;
+    justify-content:space-between;
+    padding:1.25rem;
+    position:fixed;
+    width:100%;
+    z-index:10;
+}
+
+nav a {
+    border-radius:1rem;
+    color:#000;
+    text-decoration:none;
+    padding:0.75rem;
+}
+
+nav a:hover {color:#fff;}
+
+nav a:active {opacity:0.75;}
+
+nav li {display:inline;}
+
+nav ul {
+    align-items:center;
+    display:flex;
+    flex-basis:20rem;
+    justify-content:space-around;
+}
+
+section {background-color:rgba(0, 0, 0, 0.73);}
+
+.active {
+    background-color:#000;
+    border:0.1rem solid #000;
+    color:#29bfff;
+}
+
+.active:hover {
+    background-color:#29bfff;
+    color:#000;
+}
+
+.active:active {opacity:0.75;}
+
+.infobox {
+    align-items:center;
+    background-color:rgba(0, 0, 0, 0.73);
+    border-radius:1rem;
+    color:#fff;
+    display:inline-flex;
+    justify-content:flex-start;
+    padding:0.75rem;
+}
+
+.infobox h2 {
+    color:#ffe227;
+    font-size:1.5rem;
+}
+
+.infobox img {
+    height:2rem;
+    margin-right:1rem;
+}
+
+#banner {
+    background-color:#000;
+    padding:7rem 0;
+    text-align:center;
+}
+
+#banner h1 {
+    background-color:#29bfff;
+    border-radius:1rem;
+    color:#fff;
+    display:inline-block;
+    font-size:5rem;
+    padding:0.5rem 4rem;
+}
+
+#chamber {
+    align-content:space-around;
+    align-items:center;
+    flex-wrap:wrap;
+    height:fit-content;
+    justify-content:center;
+    padding-bottom:1rem;
+    width:25%;
+}
+
+#chamber div {
+    text-align:center;
+    width:90%;
+}
+
+#chamber img {width:100%;}
+
+#content {
+    background-color:#000;
+    display:inline-block;
+    left:50%;
+    opacity:1.2;
+    padding:2rem 0;
+    position:relative;
+    text-align:center;
+    width:50%;
+}
+
+#content h1 {
+    color:#ffe227;
+    font-size: 3rem;
+    margin-bottom:2rem;
+}
+
+#content img {
+    margin:0 auto;
+    margin-bottom:2rem;
+    width:50%;
+}
+
+#content img:hover {opacity:0.75;}
+
+#content img:active {opacity:0.4;}
+
+#content ol {
+    margin:0 auto;
+    width:40%;
+}
+
+#content ol li {margin-bottom:1rem;}
+
+#footsocial {
+    align-items:center;
+    display:inline-flex;
+    flex-basis:20rem;
+    justify-content:space-around;
+}
+
+#footsocial a:hover {opacity:0.75;}
+
+#footsocial a:active {opacity:0.5;}
+
+#footsocial img {height:4rem;}
+
+#socials {
+    background-color:rgba(0, 0, 0, 0.86);
+    display:flex;
+    justify-content:space-around;
+    padding:1rem 0;
+}
+
+#orchestra {
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    width:50%;
+}
+
+#orchestra div {width:60%;}
+
+#orchestra img {
+    height:100%;
+    margin-right:2rem;
+}
+
+#socials a:hover {opacity:0.75;}
+
+#socials a:active {opacity:0.5;}
+
+#socials img {
+    height:5rem;
+    opacity:1;
+}
+
+#wind {
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+}
+
+#wind div {width:50%;}
+
+#wind img {
+    height:100%;
+    margin-right:3rem;
+}

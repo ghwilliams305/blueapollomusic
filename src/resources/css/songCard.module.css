@@ -1,0 +1,18 @@
+.article {
+    background-color:#000;
+    border-radius:1rem;
+    display:flex;
+    height:10rem;
+    margin:1rem;
+    overflow:hidden;
+}
+
+.article:hover {box-shadow:0 0 2rem 1rem #000;}
+
+.article:active {opacity:0.75;}
+
+.article h2 {
+    color:#ffe227;
+    font-size:1.75rem;
+    margin-bottom:1rem;
+}
