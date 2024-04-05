@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getSongObjByKey } from "../../resources/js/getSongs";
 
-const fetchMedia = createAsyncThunk('sheet/loadSongMedia', async (songKey, thunkAPI) => {
+export const fetchMedia = createAsyncThunk('sheet/loadSongMedia', async (songKey, thunkAPI) => {
     const songObj = getSongObjByKey(songKey);
 
     const mediaFiles = await Promise.all([
@@ -52,3 +52,6 @@ const SheetSlice = createSlice({
         });
     }
 });
+
+export const {loadSongDetails} = SheetSlice.actions;
+export default SheetSlice.reducer;

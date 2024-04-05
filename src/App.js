@@ -1,4 +1,4 @@
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import Root from "./components/Root";
 import Home from "./pages/home";
 import Music from "./pages/Music";
@@ -12,9 +12,17 @@ const router = createBrowserRouter( createRoutesFromElements(
   </Route>
 ));
 
-function App() {
+function App({state, dispatch}) {
   return (
-    <RouterProvider router={router} />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Root />}>
+          <Route index element={<Home state={state.home} dispatch={dispatch} />} />
+          <Route path="music" element={<Music state={state.muse} dispatch={dispatch} />} />
+          <Route path="music/:songKey" element={<Sheet state={state.sheet} dispatch={dispatch} />} />
+          </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

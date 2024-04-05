@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { getReleventSong, getSongObjByKey } from "../resources/js/getSongs";
 import SongCard from "../components/SongCard";
 import tubaPic from "../resources/images/temp_tuba.jpg";
+import { loadSongDetails } from "../state/slices/SheetSlice";
 
 const backgroundStyle = {
     backgroundImage:"url('../images/temp_tuba.jpg')",
@@ -12,7 +13,7 @@ const backgroundStyle = {
     backgroundSize:"cover"
 }
 
-function Sheet() {
+function Sheet({state, dispatch}) {
     const {songKey} = useParams();
     const [songObj, setSongObj] = useState();
     const [relevantContent, setRelevantContent] = useState();
@@ -22,7 +23,7 @@ function Sheet() {
     const [backgroundImage, setBackgroundImage] = useState(tubaPic);
 
     useEffect(() => {
-        const tempSongObj = getSongObjByKey(songKey);
+        const songObj = dispatch(loadSongDetails);
 
         setSongObj(tempSongObj);
 

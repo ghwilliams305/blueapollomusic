@@ -8,7 +8,7 @@ const homeSlice = createSlice({
         newMusic: []
     },
     reducers: {
-        loadSongs: (state, action) => {
+        loadHomeSongs: (state, action) => {
             return {
                 ...state,
                 popularMusic: getNewSongs(action.payload),
@@ -18,5 +18,5 @@ const homeSlice = createSlice({
     }
 });
 
-export const {loadSongs} = homeSlice.actions;
+export const {loadHomeSongs} = homeSlice.actions;
 export default homeSlice.reducer;

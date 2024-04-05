@@ -10,7 +10,7 @@ const MusicSlice = createSlice({
         chamber: []
     },
     reducers: {
-        loadSongs: (state, action) => {
+        loadMusicSongs: (state, action) => {
             return {
                 ...state,
                 band: getSongGroup('band', 10),
@@ -22,5 +22,5 @@ const MusicSlice = createSlice({
     }
 });
 
-export const {loadSongs} = MusicSlice.actions;
+export const {loadMusicSongs} = MusicSlice.actions;
 export default MusicSlice.reducer;
