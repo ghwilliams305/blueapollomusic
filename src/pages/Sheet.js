@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getReleventSong, getSongObjByKey } from "../resources/js/getSongs";
 import SongCard from "../components/SongCard";
 import tubaPic from "../resources/images/temp_tuba.jpg";
-import { fetchMedia, loadSongDetails } from "../state/slices/SheetSlice";
+import { fetchMedia, loadReleventContent, loadSongDetails } from "../state/slices/SheetSlice";
 
 const backgroundStyle = {
     backgroundImage:"url('../images/temp_tuba.jpg')",
@@ -16,7 +16,7 @@ const backgroundStyle = {
 function Sheet({state, dispatch}) {
     const {songKey} = useParams();
     const [songObj, setSongObj] = useState();
-    const [relevantContent, setRelevantContent] = useState();
+    const [relevantContent, setRelevantContent] = useState([]);
     const [image, setImage] = useState({});
     const [audio, setAudio] = useState({});
     const [score, setScore] = useState({});
@@ -24,11 +24,12 @@ function Sheet({state, dispatch}) {
 
     useEffect(() => {
         dispatch(loadSongDetails(songKey));
+        dispatch(loadReleventContent(songKey));
         dispatch(fetchMedia(songKey));
     }, [songKey]);
 
     useEffect(() => {
-        const {isReady, song} = state;
+        const {isReady, song, releventContent} = state;
 
         if(isReady) {
             setSongObj({
@@ -38,17 +39,7 @@ function Sheet({state, dispatch}) {
                 image: ''
             });
 
-            const descriptionArray = song.description.split(" ");
-            const titleArray = song.title.split(" ");
-            const searchArray = descriptionArray.concat(titleArray);
-
-            setRelevantContent([]);
-            const tempRelevantContent = getReleventSong(searchArray, 3);
-            const reducedArray = tempRelevantContent.filter((song) => song !== songKey);
-            while(reducedArray.length > 2) {
-                reducedArray.pop();
-            }
-            setRelevantContent(reducedArray.map(getSongObjByKey));
+            setRelevantContent(releventContent);
 
             setAudio(song.audio);
             setBackgroundImage(song.image);

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getSongObjByKey } from "../../resources/js/getSongs";
+import { getReleventSong, getSongObjByKey } from "../../resources/js/getSongs";
 
 export const fetchMedia = createAsyncThunk('sheet/loadSongMedia', async (songKey, thunkAPI) => {
     const songObj = getSongObjByKey(songKey);
@@ -29,7 +29,8 @@ const SheetSlice = createSlice({
             audio: {},
             score: {},
             image: {}
-        }
+        },
+        releventContent: []
     },
     reducers: {
         loadSongDetails: (state, action) => {
@@ -47,6 +48,24 @@ const SheetSlice = createSlice({
                 }
             }
         },
+        loadReleventContent: (state, action) => {
+            const {description, title} = getSongObjByKey(action.payload)
+
+            const descriptionArray = description.split(" ");
+            const titleArray = title.split(" ");
+            const searchArray = descriptionArray.concat(titleArray);
+
+            const relevantContent = getReleventSong(searchArray, 3).filter((song) => song !== action.payload);
+            while(relevantContent.length > 2) {
+                relevantContent.pop();
+            }
+            
+            return {
+                ...state,
+                isReady: true,
+                releventContent: relevantContent.map(getSongObjByKey)
+            }
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchMedia.fulfilled, (state, action) => {
@@ -70,5 +89,5 @@ const SheetSlice = createSlice({
     }
 });
 
-export const {loadSongDetails} = SheetSlice.actions;
+export const {loadSongDetails, loadReleventContent} = SheetSlice.actions;
 export default SheetSlice.reducer;
