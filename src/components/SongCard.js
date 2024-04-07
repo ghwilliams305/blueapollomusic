@@ -3,7 +3,7 @@ import songCardStyles from "../resources/css/songCard.module.css";
 import { getSongObjByKey } from "../resources/js/getSongs";
 import { useNavigate } from "react-router-dom";
 
-function SongCard({songKey, styleNum}) {
+function SongCard({tempSongObj, styleNum}) {
     const [customStyle, setCustomStyle] = useState("orchestra");
     const [songObj, setSongObj] = useState();
     const [coverImg, setCoverImg] = useState({});
@@ -15,19 +15,17 @@ function SongCard({songKey, styleNum}) {
     }, []);
 
     useEffect(() => {
-        const tempSongObj = getSongObjByKey(songKey);
-
         setSongObj(tempSongObj);
         
         import(`../content/${tempSongObj.image}`).then((image) => {
             setCoverImg(image.default);
         });
-    }, [songKey]);
+    }, [tempSongObj]);
 
     const navigate = useNavigate()
 
     const handleOnClick = () => {
-        navigate(`/music/${songKey}`);
+        navigate(`/music/${songObj.key}`);
     }
 
     return (
@@ -43,7 +41,7 @@ function SongCard({songKey, styleNum}) {
                         <p>{songObj.description.slice(0, 100) + '...'}</p>
                     </div>
                 </>
-            ) : songKey}
+            ) : songObj}
         </article>
     );
 }

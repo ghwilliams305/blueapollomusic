@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { getReleventSong, getSongObjByKey } from "../resources/js/getSongs";
 import SongCard from "../components/SongCard";
 import tubaPic from "../resources/images/temp_tuba.jpg";
-import { loadSongDetails } from "../state/slices/SheetSlice";
+import { fetchMedia, loadSongDetails } from "../state/slices/SheetSlice";
 
 const backgroundStyle = {
     backgroundImage:"url('../images/temp_tuba.jpg')",
@@ -23,33 +23,39 @@ function Sheet({state, dispatch}) {
     const [backgroundImage, setBackgroundImage] = useState(tubaPic);
 
     useEffect(() => {
-        const songObj = dispatch(loadSongDetails);
-
-        setSongObj(tempSongObj);
-
-        const descriptionArray = tempSongObj.description.split(" ");
-        const titleArray = tempSongObj.title.split(" ");
-        const searchArray = descriptionArray.concat(titleArray);
-
-        setRelevantContent([]);
-        const tempRelevantContent = getReleventSong(searchArray, 3);
-        const reducedArray = tempRelevantContent.filter((song) => song !== songKey);
-        while(reducedArray.length > 2) {
-            reducedArray.pop();
-        }
-        setRelevantContent(reducedArray);
-        
-        import(`../content/${tempSongObj.image}`).then((image) => {
-            setImage(image.default);
-            setBackgroundImage(image.default);
-        });
-        import(`../content/${tempSongObj.audio}`).then((audio) => {
-            setAudio(audio.default);
-        });
-        import(`../content/${tempSongObj.score}`).then((score) => {
-            setScore(score.default);
-        });
+        dispatch(loadSongDetails(songKey));
+        dispatch(fetchMedia(songKey));
     }, [songKey]);
+
+    useEffect(() => {
+        const {isReady, song} = state;
+
+        if(isReady) {
+            setSongObj({
+                ...song,
+                audio: '',
+                score: '',
+                image: ''
+            });
+
+            const descriptionArray = song.description.split(" ");
+            const titleArray = song.title.split(" ");
+            const searchArray = descriptionArray.concat(titleArray);
+
+            setRelevantContent([]);
+            const tempRelevantContent = getReleventSong(searchArray, 3);
+            const reducedArray = tempRelevantContent.filter((song) => song !== songKey);
+            while(reducedArray.length > 2) {
+                reducedArray.pop();
+            }
+            setRelevantContent(reducedArray.map(getSongObjByKey));
+
+            setAudio(song.audio);
+            setBackgroundImage(song.image);
+            setImage(song.image);
+            setScore(song.score);
+        }
+    }, [state]);
 
     return (
         <div style={{
@@ -74,7 +80,7 @@ function Sheet({state, dispatch}) {
                 </article>
                 <SongContainer title="Relevant Content" style={sheetStyles}>
                     {(relevantContent) ? relevantContent.map((song) => (
-                        <SongCard songKey={song} styleNum={3} />
+                        <SongCard tempSongObj={song} styleNum={3} />
                     )) : "Loading..."}
                 </SongContainer>
                 <article id="info2">

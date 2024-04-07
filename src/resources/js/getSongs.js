@@ -226,6 +226,22 @@ export function getSongObjByKey(key) {
     }
 }
 
+export async function getFullSongObjByKey(songKey) {
+    const tempObj = getSongObjByKey(songKey);
+    const mediaFiles = await Promise.all([
+        import(`../../content/${tempObj.image}`),
+        import(`../../content/${tempObj.audio}`),
+        import(`../../content/${tempObj.score}`)
+    ]);
+
+    return {
+        ...tempObj,
+        image: mediaFiles[0],
+        audio: mediaFiles[1],
+        score: mediaFiles[2]
+    }
+}
+
 console.log(getTopSongs(1));
 console.log(getNewSongs(5));
 console.log(getSongGroup('chamber', 1));

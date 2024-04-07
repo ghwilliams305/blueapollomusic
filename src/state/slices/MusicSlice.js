@@ -1,9 +1,10 @@
 const { createSlice } = require("@reduxjs/toolkit");
-const { getSongGroup } = require("../../resources/js/getSongs");
+const { getSongGroup, getSongObjByKey } = require("../../resources/js/getSongs");
 
 const MusicSlice = createSlice({
     name: 'music',
     initialState: {
+        isReady: false,
         band: [],
         wind: [],
         orchestra: [],
@@ -13,10 +14,11 @@ const MusicSlice = createSlice({
         loadMusicSongs: (state, action) => {
             return {
                 ...state,
-                band: getSongGroup('band', 10),
-                wind: getSongGroup('wind', 10),
-                orchestra: getSongGroup('orchestra', 10),
-                chamber: getSongGroup('chamber', 10)
+                isReady: true,
+                band: getSongGroup('band', 10).map(getSongObjByKey),
+                wind: getSongGroup('wind', 10).map(getSongObjByKey),
+                orchestra: getSongGroup('orchestra', 10).map(getSongObjByKey),
+                chamber: getSongGroup('chamber', 10).map(getSongObjByKey)
             }
         }
     }

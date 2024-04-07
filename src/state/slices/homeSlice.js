@@ -1,21 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { getNewSongs, getTopSongs } from "../../resources/js/getSongs";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getNewSongs, getSongObjByKey, getTopSongs } from "../../resources/js/getSongs";
 
 const homeSlice = createSlice({
     name: 'home',
     initialState: {
+        isReady: false,
         popularMusic: [],
         newMusic: []
     },
     reducers: {
-        loadHomeSongs: (state, action) => {
-            return {
+        loadHomeSongs: (state, action) => (
+            {
                 ...state,
-                popularMusic: getNewSongs(action.payload),
-                newMusic: getTopSongs(action.payload)
+                isReady: true,
+                popularMusic: getTopSongs(5).map(getSongObjByKey),
+                newMusic: getNewSongs(5).map(getSongObjByKey)
             }
-        }
-    }
+        )
+    },
 });
 
 export const {loadHomeSongs} = homeSlice.actions;

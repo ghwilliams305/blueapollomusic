@@ -4,21 +4,26 @@ import tiktok from "../resources/images/tiktok_logo.png";
 import SongContainer from "../components/SongContainer";
 import musicStyles from "../resources/css/music.module.css";
 import { useEffect, useState } from "react";
-import { getSongGroup } from "../resources/js/getSongs";
 import SongCard from "../components/SongCard";
+import { loadMusicSongs } from "../state/slices/MusicSlice";
 
-function Music() {
+function Music({state, dispatch}) {
     const [bands, setBands] = useState([]);
     const [winds, setWinds] = useState([]);
     const [orchestra, setOrchestra] = useState([]);
     const [chamber, setChamber] = useState([]);
 
     useEffect(() => {
-        setBands(getSongGroup('band', 10));
-        setWinds(getSongGroup('wind', 10));
-        setOrchestra(getSongGroup('orchestra', 10));
-        setChamber(getSongGroup('chamber', 10));
-    }, [])
+        dispatch(loadMusicSongs());
+    }, []);
+    useEffect(() => {
+        if(state.isReady){
+            setBands(state.band);
+            setWinds(state.wind);
+            setOrchestra(state.orchestra);
+            setChamber(state.chamber);
+        }
+    }, [state]);
 
     return (
         <>
@@ -30,22 +35,22 @@ function Music() {
                 </aside>
                 <SongContainer title="Big Bands" style={musicStyles}>
                     {(bands) ? bands.map((song) => (
-                        <SongCard songKey={song} styleNum={0} />
+                        <SongCard tempSongObj={song} styleNum={0} />
                     )) : "Loading..."}
                 </SongContainer>
                 <SongContainer title="Wind Ensemble" style={musicStyles}>
                     {(winds) ? winds.map((song) => (
-                        <SongCard songKey={song} styleNum={3} />
+                        <SongCard tempSongObj={song} styleNum={3} />
                     )) : "Loading..."}
                 </SongContainer>
                 <SongContainer title="Orchestra" style={musicStyles}>
                     {(orchestra) ? orchestra.map((song) => (
-                        <SongCard songKey={song} styleNum={2} />
+                        <SongCard tempSongObj={song} styleNum={2} />
                     )) : "Loading..."}
                 </SongContainer>
                 <SongContainer title="Chamber" style={musicStyles}>
                     {(chamber) ? chamber.map((song) => (
-                        <SongCard songKey={song} styleNum={1} />
+                        <SongCard tempSongObj={song} styleNum={1} />
                     )) : "Loading..."}
                 </SongContainer>
             </div>

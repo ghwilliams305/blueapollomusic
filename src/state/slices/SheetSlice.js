@@ -20,13 +20,16 @@ export const fetchMedia = createAsyncThunk('sheet/loadSongMedia', async (songKey
 const SheetSlice = createSlice({
     name: 'sheet',
     initialState: {
-        title: '',
-        type: '',
-        date: {},
-        description: "",
-        audio: {},
-        score: {},
-        image: {}
+        isReady: false,
+        song: {
+            title: '',
+            type: '',
+            date: {},
+            description: "",
+            audio: {},
+            score: {},
+            image: {}
+        }
     },
     reducers: {
         loadSongDetails: (state, action) => {
@@ -34,10 +37,14 @@ const SheetSlice = createSlice({
 
             return {
                 ...state,
-                title: songObj.title,
-                type: songObj.type,
-                date: songObj.date,
-                description: songObj.description,
+                isReady: true,
+                song: {
+                    ...state.song,
+                    title: songObj.title,
+                    type: songObj.type,
+                    date: songObj.date,
+                    description: songObj.description
+                }
             }
         },
     },
@@ -45,9 +52,19 @@ const SheetSlice = createSlice({
         builder.addCase(fetchMedia.fulfilled, (state, action) => {
             return {
                 ...state,
-                audio: action.payload.audio,
-                score: action.payload.score,
-                image: action.payload.image
+                isReady: true,
+                song: {
+                    ...state.song,
+                    audio: action.payload.audio,
+                    score: action.payload.score,
+                    image: action.payload.image
+                }
+            }
+        });
+        builder.addCase(fetchMedia.pending, (state, action) => {
+            return {
+                ...state,
+                isReady: false,
             }
         });
     }

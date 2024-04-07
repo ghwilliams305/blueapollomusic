@@ -5,27 +5,31 @@ import SongContainer from "../components/SongContainer";
 import { useEffect, useState } from "react";
 import { getNewSongs, getSongObjByKey, getTopSongs } from "../resources/js/getSongs";
 import { Link } from "react-router-dom";
+import { loadHomeSongs } from "../state/slices/homeSlice";
 
-function Home() {
+function Home({state, dispatch}) {
     const [topSongs, setTopSongs] = useState([]);
     const [newSongs, setNewSongs] = useState([]);
     const [topSongImage, setTopSongImage] = useState({});
     const [newSongImage, setNewSongImage] = useState({});
-
     useEffect(() => {
-        const notOld = getNewSongs(5);
-        const top = getTopSongs(5);
-
-        setNewSongs(notOld);
-        setTopSongs(top);
+        dispatch(loadHomeSongs());
+    }, []);
+    useEffect(() => {
+        const {isReady, popularMusic, newMusic} = state;
         
-        import(`../content/${getSongObjByKey(top[0]).image}`).then((image) => {
-            setTopSongImage(image.default);
-        });
-        import(`../content/${getSongObjByKey(notOld[0]).image}`).then((image) => {
-            setNewSongImage(image.default);
-        });
-    }, [])
+        if(isReady) {
+            setNewSongs(newMusic);
+            setTopSongs(popularMusic);
+            
+            import(`../content/${popularMusic[0].image}`).then((image) => {
+                setTopSongImage(image.default);
+            });
+            import(`../content/${newMusic[0].image}`).then((image) => {
+                setNewSongImage(image.default);
+            });
+        }
+    }, [state]);
 
     return (
         <>
@@ -40,23 +44,23 @@ function Home() {
             <section>
                 <div id="content">
                     <SongContainer title="Top Songs">
-                        <img id="topimg" src={topSongImage} alt="top song cover" />
+                        <img id="topimg" src={topSongImage ? topSongImage : ''} alt='top song cover' />
                         <ol id="top">
                             {(topSongs) ? topSongs.map((song) => (
                                 <li>
-                                    <Link to={`/music/${song}`}>{getSongObjByKey(song).title}</Link>
+                                    <Link to={`/music/${song.key}`}>{song.title}</Link>
                                 </li>
-                            )) : "Loading..."}
+                            )) : 'Loading'}
                         </ol>
                     </SongContainer>
                     <SongContainer title="New Songs">
-                        <img id="newimg" src={newSongImage} alt="new song cover" />
+                        <img id="newimg" src={newSongImage ? newSongImage : ''} alt="new song cover" />
                         <ol id="new">
                             {(newSongs) ? newSongs.map((song) => (
                                 <li>
-                                    <Link to={`/music/${song}`}>{getSongObjByKey(song).title}</Link>
+                                    <Link to={`/music/${song.key}`}>{song.title}</Link>
                                 </li>
-                            )) : "Loading..."}
+                            )) : 'Loading'}
                         </ol>
                     </SongContainer>
                 </div>
