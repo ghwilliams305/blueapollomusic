@@ -1,4 +1,44 @@
 const songBanks = {
+    lunarFog: {
+        key: 'lunar_fog',
+        title: 'Lunar Fog',
+        type: 'chamber',
+        date: new Date('2024-03-17'),
+        description: "This semester has been a bit hectic. Nothing I can't manage, but there have been a lot of late nights walking back to my dorm. Coming from the main campus, the inter-campus bus would stop me about ten minutes away from my dorm. From there, I would have to walk back in the dead of night. The moments walking back are some of my favorite, looking up and gazing at the stars and the moon. This piece, scored for a woodwind ensemble, is inspired by the moon piercing through the night clouds above, the clouds casting an ominous shadow in the moon's light. The song begins with my peaceful walk home before I look up and see the moon glaring down at me. The bassoon plays low, pungent eighth notes, the bass clarinet singing the low, ominous aura of the moon, and the high reeds fluttering over top. Eventually, I have to walk into my dorm, and the moon is covered by man-made walls. It doesn't end there, though; through my window, the moon watches over me as I sleep, refueling me for the next day. This piece is suitable for a woodwind ensemble, ideal for chamber music performances. The score is available on Musescore for those interested in sheet music inspired by the moon and the celestial beauty of the night sky.",
+
+        get audio() {
+            return `${this.key}/${this.key}.mp3`;
+        },
+
+        get score() {
+            return `${this.key}/${this.key}.pdf`;
+        },
+
+        get image() {
+            return `${this.key}/${this.key}.jpg`;
+        }
+    },
+
+    overpower: {
+        key: 'overpower',
+        title: 'Overpower',
+        type: 'wind',
+        date: new Date('2024-02-11'),
+        description: "Embark on the enthralling side tale within the Internal Flame saga with 'Overpower,' a compelling musical journey that revolves around the antagonist, Helena. This track delves into the intricate narrative of a seemingly sweet southern girl with curly blonde hair, who manipulates the main character, Aiden, down the dangerous path of substance abuse, establishing dominance over him. The music mirrors the unfolding drama, commencing with subtle, sneaky low woodwinds that progressively intensify, echoing Helena's insidious influence. The emergence of brass coincides with Helena's impactful entry into Aiden's life, seamlessly intertwining with the storyline. 'Overpower' encapsulates the paradox of Helena's overwhelming control and deceptive compassion. Experience the climactic confrontation as Aiden challenges Helena, reclaiming his power. This composition serves as an anthem of triumph over challenges and underscores the profound realization that each of us is the protagonist of our own story. Dive into the layers of 'Overpower,' a musical exploration of empowerment, resilience, and self-discovery, seamlessly integrated into the Internal Flame universe.",
+
+        get audio() {
+            return `${this.key}/${this.key}.mp3`;
+        },
+
+        get score() {
+            return `${this.key}/${this.key}.pdf`;
+        },
+
+        get image() {
+            return `${this.key}/${this.key}.jpg`;
+        }
+    },
+
     home: {
         key: 'home',
         title: 'Home',
@@ -223,22 +263,6 @@ export function getSongObjByKey(key) {
         if(key === songBanks[x].key) {
             return songBanks[x];
         }
-    }
-}
-
-export async function getFullSongObjByKey(songKey) {
-    const tempObj = getSongObjByKey(songKey);
-    const mediaFiles = await Promise.all([
-        import(`../../content/${tempObj.image}`),
-        import(`../../content/${tempObj.audio}`),
-        import(`../../content/${tempObj.score}`)
-    ]);
-
-    return {
-        ...tempObj,
-        image: mediaFiles[0],
-        audio: mediaFiles[1],
-        score: mediaFiles[2]
     }
 }
 
