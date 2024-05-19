@@ -1,4 +1,24 @@
 const songBanks = {
+    expectations: {
+        key: 'expectations',
+        title: 'Expectations',
+        type: 'chamber',
+        date: new Date('2024-04-21'),
+        description: "Reflecting on my college relationship journey, I've come to realize a recurring theme: my expectations often surpass what others can deliver. While holding people to high standards may seem noble, it's a perspective I've had to reevaluate. This introspective piece, set for brass sextet and piano, encapsulates the complexities of a relationship where expectations and reality collide. Amidst the brass ensemble's resounding melodies, this composition delves into the turmoil of unmet expectations and the internal struggle of reconciling disappointment with understanding. Inspired by personal experiences, the music resonates with the raw emotions of frustration, remorse, and ultimately, acceptance. Join the brass ensemble on this poignant musical journey and explore the delicate balance between expectation and empathy.",
+
+        get audio() {
+            return `${this.key}/${this.key}.mp3`;
+        },
+
+        get score() {
+            return `${this.key}/${this.key}.pdf`;
+        },
+
+        get image() {
+            return `${this.key}/${this.key}.jpg`;
+        }
+    },
+
     lunarFog: {
         key: 'lunar_fog',
         title: 'Lunar Fog',
