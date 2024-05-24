@@ -13,7 +13,7 @@ function Footer() {
                 <div id="footsocial">
                     <a href="https://www.instagram.com/blueapo11omusic/" target="_blank"><img src={insta} alt="instagram button icon"/></a>
                     <a href="https://www.youtube.com/@blueapollomusic1713" target="_blank"><img src={youtube} alt="youtube button icon"/></a>
-                    <a href="#" target="_blank"><img src={tiktok} alt="tik tok button icon"/></a>
+                    <a href="https://musescore.com/user/46747553" target="_blank"><img src={tiktok} alt="musescore button icon"/></a>
                 </div>
             </footer>
         </>
