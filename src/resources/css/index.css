@@ -139,8 +139,8 @@ section {background-color:rgba(0, 0, 0, 0.73);}
 #content {
     background-color:#000;
     display:inline-block;
-    left:50%;
     opacity:1.2;
+    left: 50%;
     padding:2rem 0;
     position:relative;
     text-align:center;
@@ -194,6 +194,7 @@ section {background-color:rgba(0, 0, 0, 0.73);}
     align-items:center;
     flex-wrap:wrap;
     justify-content:flex-start;
+    min-width: 30.5rem;
     width:50%;
 }
 
@@ -217,6 +218,7 @@ section {background-color:rgba(0, 0, 0, 0.73);}
     align-items:center;
     flex-wrap:wrap;
     justify-content:flex-start;
+    min-width: 27rem;
 }
 
 #wind div {width:50%;}
@@ -224,4 +226,22 @@ section {background-color:rgba(0, 0, 0, 0.73);}
 #wind img {
     height:100%;
     margin-right:3rem;
+}
+
+@media only screen and (max-width: 650px) {
+    * {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    * {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    * {
+        font-size: 5px;
+    }
 }
